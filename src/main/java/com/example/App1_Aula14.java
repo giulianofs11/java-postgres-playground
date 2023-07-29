@@ -1,6 +1,6 @@
 package com.example;
 
-public class Aula14 {
+public class App1_Aula14 {
     public static void main(String[] args) {
         int idadeInt = 35;
         byte idade = (byte) idadeInt; 
@@ -15,6 +15,10 @@ public class Aula14 {
         System.out.println("A idade é " + idade + " , o peso é " + peso + " e o sexo é " + sexo);
         System.out.println("Necessidades especiais: " + necessidadesEspeciais);
         System.out.println("Ano nascimento: " + anonascimento);
+
+        int i = 10;
+        double d = i;
+        System.out.println(d);
         
     }
 }
