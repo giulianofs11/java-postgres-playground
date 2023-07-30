@@ -32,8 +32,5 @@ public class App10_Scanner {
         System.out.println("Cliente especial: " + cliente1.isEspecial());
         System.out.println();
 
-        
-
-
     }
 }
