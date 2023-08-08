@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class App18_Listas {
@@ -16,5 +17,6 @@ public class App18_Listas {
 
         listaClientes.add(cliente1);
         listaClientes.add(cliente2);
+
     }
 }

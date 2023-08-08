@@ -1,7 +1,8 @@
 package com.example;
 
 public class Cliente {
-// 1. ATRIBUTOS: são Variáveis criadas em uma classe
+
+    // 1. ATRIBUTOS: são Variáveis criadas em uma classe
     private String nome;
     private String cpf;
     private double renda;
@@ -9,7 +10,7 @@ public class Cliente {
     private int anoNascimento;
     private boolean especial;
 
- // 2. MÉTODOS CONSTRUTORES
+     // 2. MÉTODOS CONSTRUTORES
     public Cliente(){
         System.out.println("Criando um cliente usando o construtor sem parametros.");
         double aleatorio = Math.random();
