@@ -18,5 +18,7 @@ public class App18_Listas {
         listaClientes.add(cliente1);
         listaClientes.add(cliente2);
 
+        System.out.println(listaClientes);
+
     }
 }
