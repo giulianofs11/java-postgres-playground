@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.model.Cliente;
+
 public class App13_OperadoresRelacionais {
     public static void main(String[] args) {
         var cliente1 = new Cliente();

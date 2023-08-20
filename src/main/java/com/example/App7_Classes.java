@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.model.Cliente;
+
 public class App7_Classes {
     public static void main(String[] args) {
        

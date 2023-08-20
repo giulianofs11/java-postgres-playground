@@ -1,31 +1,47 @@
 package com.example;
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
+
+import com.example.dao.ConnectionManager;
+import com.example.dao.DAO;
+import com.example.dao.EstadoDAO;
+import com.example.dao.ProdutoDAO;
+import com.example.model.Marca;
+import com.example.model.Produto;
 
 public class AppDb {
     public static void main(String[] args) {    
-        
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Não foi possivel carregar a biblioteca para acesso ao banco e dados."  + e.getMessage());
-        }
-        
-        Statement statement = null;
-        try(var conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "gitpod", "")) {
-            System.out.println("Conexão com o banco realizada com sucesso.");
+        new AppDb();
+    }
 
-            statement = conn.createStatement();
-            var result = statement.executeQuery("select * from estado");
-            while(result.next()) {
-                System.out.printf("id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("UF"));
+    // Construtor
+    public AppDb() {
+        try(var conn = ConnectionManager.getConnection()) {
+            
+            var estadoDAO = new EstadoDAO(conn);
+            var listaEstados = estadoDAO.listar();
+            for (var estado : listaEstados) {
+                System.out.println(estado);
             }
+            
+            var marca = new Marca();
+            marca.setId(2L);
+
+            var produto = new Produto();
+            produto.setId(206L);
+            produto.setMarca(marca);
+            produto.setValor(90);
+            produto.setNome("Produto Novo");
+
+            var produtoDAO = new ProdutoDAO(conn);
+            produtoDAO.alterar(produto);
+            produtoDAO.excluir(207L);
+            
+            var dao = new DAO(conn);
+            dao.listar(produto);
+
         } catch (SQLException e) {
-            if(statement == null)
                 System.err.println("Não foi possivel conectar ao banco de dados" + e.getMessage());
-            else System.err.println("Não foi possivel executar a consulta ao banco." + e.getMessage());
-        } 
-    }    
+        }
+    }
 }
