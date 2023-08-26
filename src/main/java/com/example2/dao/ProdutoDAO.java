@@ -1,9 +1,9 @@
-package com.example.dao;
+package com.example2.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.example.model.Produto;
+import com.example2.model.*;
 
 public class ProdutoDAO {
     private Connection conn;
@@ -20,15 +20,6 @@ public class ProdutoDAO {
         statement.executeUpdate();
     }
 
-    public void excluir(long id) throws SQLException {
-        var sql = "delete from produto where id = ?";
-        var statement = conn.prepareStatement(sql);
-        statement.setLong(1, id);
-        if(statement.executeUpdate() == 1)
-            System.out.println("Produto excluído com sucesso.");
-        else System.out.println("Prouto não foi localizado");
-        }
-
     public void alterar(Produto produto) throws SQLException {
         var sql = "update produto set nome = ?, marca_id = ?, valor = ? where id = ?";
         var statement = conn.prepareStatement(sql);
@@ -40,7 +31,7 @@ public class ProdutoDAO {
     }
 
     public void listar(Produto produto) throws SQLException {
-        var sql = "select * from " + produto;
+        var sql = "select * from produto;";
         var statement = conn.createStatement();
         var result = statement.executeQuery(sql);
 
@@ -59,4 +50,14 @@ public class ProdutoDAO {
             System.out.println();
         }
     }
+
+    public void excluir(long id) throws SQLException {
+        var sql = "delete from produto where id = ?";
+        var statement = conn.prepareStatement(sql);
+        statement.setLong(1, id);
+        if(statement.executeUpdate() == 1)
+            System.out.println("Produto excluído com sucesso.");
+        else System.out.println("Prouto não foi localizado");
+        }
+    
 }
