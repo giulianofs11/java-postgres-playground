@@ -13,7 +13,7 @@ public class EstadoDAO {
     public EstadoDAO(Connection conn) {
         this.conn = conn;
     }
-
+    // Testando comentario para incluir alteracao no gtit
     public List<Estado> listar() throws SQLException {
         var lista = new LinkedList<Estado>();
         var statement = conn.createStatement();
