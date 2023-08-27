@@ -30,6 +30,22 @@ public class ProdutoDAO {
         statement.executeUpdate();
     }
 
+ /* 
+    public List<Produto> listar() throws SQLException {
+        var lista = new LinkedList<Produto>();
+        var statement = conn.createStatement();
+        var result = statement.executeQuery("select * from estado");
+        while(result.next()) {
+            var produto = new Produto();
+            produto.setId(result.getLong("id"));
+            produto.setNome(result.getString("nome"));
+            //produto.setLong(result.getMarca("marca"));
+            lista.add(produto);
+        }        
+        return lista;
+    }
+*/
+   
     public void listar(Produto produto) throws SQLException {
         var sql = "select * from produto;";
         var statement = conn.createStatement();
@@ -50,6 +66,8 @@ public class ProdutoDAO {
             System.out.println();
         }
     }
+  
+
 
     public void excluir(long id) throws SQLException {
         var sql = "delete from produto where id = ?";
@@ -59,5 +77,5 @@ public class ProdutoDAO {
             System.out.println("Produto excluído com sucesso.");
         else System.out.println("Prouto não foi localizado");
         }
-    
+
 }
